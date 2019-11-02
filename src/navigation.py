@@ -6,6 +6,11 @@ contains the algorithm that finds the shortest path
 
 import grid
 
+board = grid.grid([(1,0,2,0),(1,0,1,1),(1,1,2,1),(0,2,1,2)], (0,0), (32,32))
+board.addFlooded((2, 0), (1, 1))
+board.addFlooded((0, 2), (1, 1))
+board.addFlooded((2, 2), (1, 1))
+
 class Node():
     """A node class for A* Pathfinding"""
 
@@ -20,7 +25,7 @@ class Node():
     def __eq__(self, other):
         return self.position == other.position
 
-def astar(start, end):
+def astar(board, start, end):
     """Returns a list of tuples as a path from the given start to the given end in the given maze"""
 
     # Create start and end node
@@ -62,17 +67,13 @@ def astar(start, end):
 
         # Generate children
         children = []
-        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]: #, (-1, -1), (-1, 1), (1, -1), (1, 1)]: # Adjacent squares
+        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]: # Adjacent squares
 
             # Get node position
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
 
-            # Make sure within range
-            if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
-                continue
-
             # Make sure walkable terrain
-            if grid.checkConnection(current_node.position, node_position) != 0:
+            if board.checkConnection(current_node.position, node_position) != 0:
                 continue
 
             # Create new node
@@ -105,5 +106,5 @@ def astar(start, end):
 start = (2, 0)
 end = (0, 2)
 
-path = astar(start, end)
+path = astar(board, start, end)
 print(path)
