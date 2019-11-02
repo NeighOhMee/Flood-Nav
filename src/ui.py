@@ -28,9 +28,10 @@ for i in range(35):
         else:
             board.append([0]*38)
 
-board[0][0] = 1
-board[1][1] = 2
-board[15][20] = 1
+board[3][0] = 1
+board[2][0] = 1
+board[3][1] = 1
+board[1][2] = 1
 
 while not done:
     for event in pygame.event.get():
