@@ -33,6 +33,9 @@ class grid(object):
 		if setString not in self.floodCon:
 			self.floodCon.add(setString)
 
+	def addPerson(self, point1, point2):
+		#adds
+
 
 if __name__ == "__main__":
 	test = grid([(1,0,2,0),(1,0,1,1),(1,1,2,1),(0,2,1,2)], (0,0), (32,32))
