@@ -1,3 +1,7 @@
+'''
+this file contains the grid class that is in charge of holding the data for the rows
+'''
+
 class grid(object):
 	def __init__(self, Fconnections, bound1, bound2):
 		#vector that holds all the data
@@ -11,7 +15,7 @@ class grid(object):
 			else:
 				setString = str(ls[2]) + str(ls[3]) + str(ls[0]) + str(ls[1])
 			self.floodCon.add(setString)
-	
+
 	def checkConnection(self,point1, point2):
 		#Checks if two points are connected, returns 0 if connected, 1 if flooded, 2 if out 
 		#of range 
@@ -32,6 +36,19 @@ class grid(object):
 			setString = str(point2[0]) + str(point2[1]) + str(point1[0]) + str(point1[1])
 		if setString not in self.floodCon:
 			self.floodCon.add(setString)
+
+	def removeFlooded(self, point1, point2):
+		if point1 < point2:
+			setString = str(point1[0]) + str(point1[1]) + str(point2[0]) + str(point2[1])
+		else:
+			setString = str(point2[0]) + str(point2[1]) + str(point1[0]) + str(point1[1])
+		if setString not in self.floodCon:
+			self.floodCon.remove(setString)
+	'''
+	def addPerson(self, point1, point2):
+		#adds a person to the list of 
+	'''
+		
 
 
 if __name__ == "__main__":
