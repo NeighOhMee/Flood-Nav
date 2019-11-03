@@ -55,5 +55,9 @@ while not done:
         for j in range(dimensions[1]):
             drawRect(screen, (0, 0, 0), (i*40, j*40), (5, 5))
     clock.tick()
-    pygame.display.flip()    
+    pygame.display.flip()
+
+dirname = os.path.dirname(__file__)
+full_path = os.path.join(dirname, 'static/images/screenshot.png')
+pygame.image.save( screen, full_path)    
 pygame.quit()
