@@ -20,7 +20,7 @@ class grid(object):
 	def checkConnection(self,point1, point2):
 		#Checks if two points are connected, returns 0 if connected, 1 if flooded, 2 if out 
 		#of range 
-		if point1 < self.bound[0] or point1 > self.bound[1] or point2< self.bound[0] or point2 > self.bound[1]:
+		if point1[0] < self.bound[0][0] or point1[0] > self.bound[1][0] or point2[0] < self.bound[0][0] or point2[0] > self.bound[1][0] or point1[1] < self.bound[0][1] or point1[1] > self.bound[1][1] or point2[1] < self.bound[0][1] or point2[1] > self.bound[1][1]:
 			return 2
 		if point1 < point2:
 			setString = str(point1[0]) + str(point1[1]) + str(point2[0]) + str(point2[1])
