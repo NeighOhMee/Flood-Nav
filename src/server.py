@@ -10,7 +10,7 @@ def startServer():
 	# Read port selected by the cloud for our application
 	PORT = int(os.getenv('PORT', 8000))
 	# Change current directory to avoid exposure of control files
-	os.chdir('static')
+	os.chdir('C:\\Users\\nettr\\Dropbox\\Random Projects\\Hackathon\\Flood Nav\\Flood-Nav\\src\\static')
 
 	httpd = Server(("", PORT), Handler)
 	try:

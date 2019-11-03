@@ -6,11 +6,6 @@ contains the algorithm that finds the shortest path
 
 import grid
 
-board = grid.grid([(1,0,2,0),(1,0,1,1),(1,1,2,1),(0,2,1,2)], (0,0), (32,32))
-board.addFlooded((2, 0), (1, 1))
-board.addFlooded((0, 2), (1, 1))
-board.addFlooded((2, 2), (1, 1))
-
 class Node():
     """A node class for A* Pathfinding"""
 
@@ -63,6 +58,9 @@ def astar(board, start, end):
             while current is not None:
                 path.append(current.position)
                 current = current.parent
+            print(path)
+            for i in range(len(path)-1):
+                board.addPath(path[i], path[i+1])
             return path[::-1] # Return reversed path
 
         # Generate children
@@ -102,9 +100,3 @@ def astar(board, start, end):
 
             # Add the child to the open list
             open_list.append(child)
-
-start = (2, 0)
-end = (0, 2)
-
-path = astar(board, start, end)
-print(path)
