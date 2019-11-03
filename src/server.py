@@ -1,6 +1,6 @@
 import os
-def startServer(success, distance):
-	'''try:
+def startServer():
+	try:
 	  from SimpleHTTPServer import SimpleHTTPRequestHandler as Handler
 	  from SocketServer import TCPServer as Server
 	except ImportError:
@@ -18,21 +18,4 @@ def startServer(success, distance):
 	  httpd.serve_forever()
 	except KeyboardInterrupt:
 	  pass
-	httpd.server_close()'''
-	from flask import Flask, render_template
-	app = Flask(__name__, static_url_path='/static')
-
-	@app.route('/')
-	def index():
-		if success:
-			message = "Calculated"
-		else:
-			message = "Failed"
-		if distance:
-			distance_message = "Distance = "
-			distance_message += str(distance)
-		else:
-			distance_message = ""
-		return render_template('index.html', success=message, distance=distance_message)
-	
-	app.run(debug=True)
+	httpd.server_close()

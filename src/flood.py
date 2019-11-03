@@ -1,6 +1,6 @@
 import random
 
-FLOOD_ZONES = 15
+FLOOD_ZONES = 10
 ZONE_SIZE = 5
 RAND_FLOOD = 3
 
