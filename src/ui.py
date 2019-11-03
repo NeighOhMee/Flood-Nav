@@ -13,6 +13,7 @@ def drawRect(screen, color, position, size):
 
 def startUp(dimensions, grid):
     board = grid
+    os.environ["SDL_VIDEODRIVER"] = "dummy"
     pygame.init()
     screen = pygame.display.set_mode(((dimensions[1]-1)*40+5, (dimensions[0]-1)*40+5))
     done = False
