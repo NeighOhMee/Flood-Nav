@@ -48,7 +48,7 @@ def startUp(dimensions, grid, start_end):
             drawRect(screen, color, (j*40, i*40), (5, 5))
     clock.tick()
     dirname = os.path.dirname(__file__)
-    full_path = os.path.join(dirname, 'static/images/screenshot.png')
+    full_path = os.path.join(dirname, 'templates/screenshot.png')
     pygame.image.save( screen, full_path)
     pygame.quit()
     done = True
