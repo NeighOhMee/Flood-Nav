@@ -11,7 +11,7 @@ import os
 def drawRect(screen, color, position, size):
     pygame.draw.rect(screen, color, pygame.Rect(position[0], position[1], size[0], size[1]))
 
-def startUp(dimensions, grid):
+def startUp(dimensions, grid, start_end):
     board = grid
     os.environ["SDL_VIDEODRIVER"] = "dummy"
     pygame.init()
@@ -40,11 +40,16 @@ def startUp(dimensions, grid):
                         pygame.draw.polygon(screen, color, [(j*40+1, i*40), (j*40+5, i*40+2), (j*40+42, i*40-35), (j*40+40, i*40-39)], 0)
     for i in range(dimensions[0]):
         for j in range(dimensions[1]):
-            drawRect(screen, (0, 0, 0), (j*40, i*40), (5, 5))
+            if (i, j) == start_end[0] or (i, j) == start_end[1]:
+                print("Goal / Start:", i, j)
+                color = (0, 255, 0)
+            else:
+                color = (0, 0, 0)
+            drawRect(screen, color, (j*40, i*40), (5, 5))
     clock.tick()
     dirname = os.path.dirname(__file__)
     full_path = os.path.join(dirname, 'static/images/screenshot.png')
-    pygame.image.save( screen, full_path)    
+    pygame.image.save( screen, full_path)
     pygame.quit()
     done = True
 

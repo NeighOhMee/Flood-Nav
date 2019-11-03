@@ -10,18 +10,16 @@ import ui
 import navigation
 import server
 import grid
+import flood
 
-dimensions = (5, 5)
-board = grid.grid([(1,0,2,0),(1,0,1,1),(1,1,2,1),(0,2,1,2)], (0,0), (5,5))
-board.addFlooded((2, 0), (1, 1))
-board.addFlooded((0, 2), (1, 1))
-board.addFlooded((2, 2), (1, 1))
-board.addFlooded((2, 1), (1, 2))
-board.addFlooded((0, 1), (1, 2))
-board.addFlooded((1, 0), (2, 1))
+dimensions = (5, 10)
+board = grid.grid([], (0,0), dimensions)
+flood.generateFloods(board)
+start_end = flood.generateGoal(dimensions)
 
-navigation.astar(board, (2, 0), (0, 0))
+print("Start / Goal:", start_end[0], start_end[1])
+navigation.astar(board, start_end[0], start_end[1])
 
 print("Startup...")
-ui.startUp(dimensions, board)
+ui.startUp(dimensions, board, start_end)
 server.startServer()
